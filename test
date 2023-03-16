@@ -1,0 +1,15 @@
+#test random environment->take random steps
+env = gym.make(environment_name)#lunar lander environment 형성
+episodes = 10 #착륙 10번 시도
+for episode in range(1, episodes+1): #1부터 11까지 정수 범위를 반환
+    state = env.reset() #resetting variables
+    done = False
+    score = 0
+
+    while not done: #done이 True
+        env.render() #시각화
+        action = env.action_space.sample() #take random steps(퍼포먼스가 좋지는 않음)
+        n_state, reward, done, info = env.step(action)#?
+        score+=reward #score에 reward 합산
+    print('Episode:{} Score:{}'.format(episode, score)) #format 함수로 문자열 포맷팅
+env.close()
